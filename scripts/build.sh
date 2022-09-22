@@ -2,7 +2,7 @@
 set -e                  # exit on error
 set -o pipefail         # exit on pipeline error
 set -u                  # treat unset variable as error
-#set -x
+set -x
 
 SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 
@@ -114,9 +114,9 @@ function run_chroot() {
 
     # Setup build scripts in chroot environment
     sudo ln -f $SCRIPT_DIR/chroot_build.sh chroot/root/chroot_build.sh
-    sudo ln -f $SCRIPT_DIR/default_config.sh chroot/root/default_config.sh
-    if [[ -f "$SCRIPT_DIR/config.sh" ]]; then
-        sudo ln -f $SCRIPT_DIR/config.sh chroot/root/config.sh
+    sudo ln -f $SCRIPT_DIR/config.sh chroot/root/config.sh
+    if [[ -f "$SCRIPT_DIR/default_config.sh" ]]; then
+        sudo ln -f $SCRIPT_DIR/config.sh chroot/root/default_config.sh
     fi
 
     # Launch into chroot environment to build install image.
