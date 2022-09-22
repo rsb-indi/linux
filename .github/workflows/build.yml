@@ -17,6 +17,7 @@ jobs:
       - name: build script
         run: |
           cd scripts
+          chmod +x *.sh
           ./build.sh -
 
       - name: upload script
