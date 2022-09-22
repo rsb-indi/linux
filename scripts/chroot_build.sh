@@ -2,7 +2,7 @@
 set -e                  # exit on error
 set -o pipefail         # exit on pipeline error
 set -u                  # treat unset variable as error
-#set -x
+set -x                  # echo on
 
 SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 #SCRIPT_DIR=${GITHUB_WORKSPACE}/scripts
