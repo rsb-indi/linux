@@ -81,7 +81,7 @@ EOF
 
 # Load configuration values from file
 function load_config() {
-    echo -e "Script@${SCRIPT_DIR}, Workspace@${GITHUB_WORKSPACE}"
+    echo -e "Script@${SCRIPT_DIR}"
     if [[ -f "$SCRIPT_DIR/config.sh" ]]; then 
         . "$SCRIPT_DIR/config.sh"
     elif [[ -f "$SCRIPT_DIR/default_config.sh" ]]; then
