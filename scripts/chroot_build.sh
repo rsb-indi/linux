@@ -1,11 +1,11 @@
-#!/bin/bash
-
+#!/bin/env bash
 set -e                  # exit on error
 set -o pipefail         # exit on pipeline error
 set -u                  # treat unset variable as error
 #set -x
 
-SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
+#SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
+SCRIPT_DIR=${GITHUB_WORKSPACE}/scripts
 
 CMD=(setup_host install_pkg finish_up)
 
@@ -56,12 +56,12 @@ function setup_host() {
     echo "=====> running setup_host ..."
 
    cat <<EOF > /etc/apt/sources.list
-deb $TARGET_UBUNTU_MIRROR $TARGET_UBUNTU_VERSION main restricted universe multiverse
-deb-src $TARGET_UBUNTU_MIRROR $TARGET_UBUNTU_VERSION main restricted universe multiverse
-deb $TARGET_UBUNTU_MIRROR $TARGET_UBUNTU_VERSION-security main restricted universe multiverse
-deb-src $TARGET_UBUNTU_MIRROR $TARGET_UBUNTU_VERSION-security main restricted universe multiverse
-deb $TARGET_UBUNTU_MIRROR $TARGET_UBUNTU_VERSION-updates main restricted universe multiverse
-deb-src $TARGET_UBUNTU_MIRROR $TARGET_UBUNTU_VERSION-updates main restricted universe multiverse
+deb $TARGET_LINUX_MIRROR $TARGET_LINUX_VERSION main restricted universe multiverse
+deb-src $TARGET_LINUX_MIRROR $TARGET_LINUX_VERSION main restricted universe multiverse
+deb $TARGET_LINUX_MIRROR $TARGET_LINUX_VERSION-security main restricted universe multiverse
+deb-src $TARGET_LINUX_MIRROR $TARGET_LINUX_VERSION-security main restricted universe multiverse
+deb $TARGET_LINUX_MIRROR $TARGET_LINUX_VERSION-updates main restricted universe multiverse
+deb-src $TARGET_LINUX_MIRROR $TARGET_LINUX_VERSION-updates main restricted universe multiverse
 EOF
 
     echo "$TARGET_NAME" > /etc/hostname
