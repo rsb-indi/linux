@@ -4,8 +4,8 @@ set -o pipefail         # exit on pipeline error
 set -u                  # treat unset variable as error
 #set -x
 
-#SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
-SCRIPT_DIR=${GITHUB_WORKSPACE}/scripts
+SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
+#SCRIPT_DIR=${GITHUB_WORKSPACE}/scripts
 
 CMD=(setup_host install_pkg finish_up)
 
@@ -81,6 +81,10 @@ EOF
 
 # Load configuration values from file
 function load_config() {
+    pwd
+    ls -al
+    ls -al ${SCRIPT_DIR}
+    ls -al ${GITHUB_WORKSPACE}
     if [[ -f "$SCRIPT_DIR/config.sh" ]]; then 
         . "$SCRIPT_DIR/config.sh"
     elif [[ -f "$SCRIPT_DIR/default_config.sh" ]]; then
