@@ -129,7 +129,7 @@ function install_pkg() {
     ubiquity-ubuntu-artwork
 
     # Call into config function
-    customize_image
+    custom_package
 
     # remove unused and clean up apt cache
     apt-get autoremove -y
